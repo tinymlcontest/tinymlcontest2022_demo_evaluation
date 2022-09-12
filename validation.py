@@ -82,6 +82,7 @@ def main():
                     resultList.append('0')
                 else:
                     resultList.append('1')
+                # the total time minus sleep/halt time on PC and MCU
                 timeList.append(((end_time-start_time).seconds*1000)+((end_time-start_time).microseconds/1000)-44)
                 ofp.write(str(results)+'\r')
     ofp.close()
