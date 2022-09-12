@@ -16,7 +16,7 @@ You can run this classifier code by installing the requirements
 
     pip install requirements.txt
 
-and referring to [How to validate X-CUBE-AI model on board.md]() or [How to validate your own model on board.md]() to modify the C source code project to be deployed on board
+and referring to [How to validate X-CUBE-AI model on board.md](https://github.com/tinymlcontest/tinyml_contest2022_demo_evaluation/blob/main/How%20to%20validate%20X-CUBE-AI%20model%20on%20board.md) or [How to validate your own model on board.md](https://github.com/tinymlcontest/tinyml_contest2022_demo_evaluation/blob/main/How%20to%20validate%20your%20own%20model%20on%20board.md) to modify the C source code project to be deployed on board
 
 and running
 
