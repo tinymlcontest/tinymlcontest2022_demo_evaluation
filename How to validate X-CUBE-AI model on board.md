@@ -36,7 +36,7 @@ We use usb2micro usb cable to connect the development board and the upper comput
 
 <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220827121203762.png" alt="image-20220827121203762" style="zoom:50%;" />
 
-Afering connect the board to PC, run the `valaditon.py` , when seeing output like below, press the **reset button** shown in the picture, and the validation will start.
+Afering connect the board to PC, run the `validation.py` , when seeing output like below, press the **reset button** shown in the picture, and the validation will start.
 
 ![iShot_2022-08-27_12.04.57](https://raw.githubusercontent.com/AugustZTR/picbed/master/img/iShot_2022-08-27_12.04.57.png)
 

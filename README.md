@@ -20,7 +20,7 @@ and referring to [How to validate X-CUBE-AI model on board.md](https://github.co
 
 and running
 
-    python Validation.py
+    python validation.py
 
 After running the scripts, the metrics
 1. F_Beta score **F-B** 
