@@ -6,7 +6,7 @@ For details, please refer to [Getting Started with STM32CubeAI.md](https://githu
 
 There is one difference from the above document：
 
-1. When enabling CubeAI package, you should choose `Application Temp`.
+1. When selecting X-Cube-AI package, you should choose `Application Temp`.
 
    <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220826184229102.png" alt="image-20220826184229102" style="zoom:50%;" />
 
