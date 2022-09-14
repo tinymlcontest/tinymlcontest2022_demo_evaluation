@@ -2,7 +2,7 @@
 
 ## Generate C source code
 
-For details, please refer to `Getting Started with STM32CubeAI.md`
+For details, please refer to [Getting Started with STM32CubeAI.md](https://github.com/tinymlcontest/tinyml_contest2022_demo_example/blob/master/README-Cube.md)
 
 There is one difference from the above document：
 
