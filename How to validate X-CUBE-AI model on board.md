@@ -15,6 +15,7 @@ There is one difference from the above document：
    <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220826184853048.png" alt="image-20220826184853048" style="zoom:50%;" />
 
 2. When generating code, make sure to select `Basic` option in `Application Structure`. 
+
    <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220915101630837.png" alt="image-20220826184853048" style="zoom:50%;" />
 
    In order to operate the header file later, don't forget to check option `Generate peripheral initialization as a pair of '.c/.h' files per peripheral` in the Code Generator when generating code.
