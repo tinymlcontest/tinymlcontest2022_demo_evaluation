@@ -35,6 +35,10 @@ All modified files are provided. Four files should be modified in order to run t
 3. app_x-cube-ai.h
 4. main.c
 
+When build the code, make sure that you check `Use MicroLIB` in Setting-Target-Code Generation. 
+
+   <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220916085712870.png" alt="image-20220915093242012" style="zoom:67%;" />
+
 Once connected the board with PC, you should check the port number through the device manager and change it in the `validation.py` file.
 
 
