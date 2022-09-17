@@ -101,8 +101,8 @@ def main():
     F1_score = (2 * precision * sensitivity) / (precision + sensitivity)
     F_beta_score = (1+2**2) * (precision * sensitivity) / ((2**2)*precision + sensitivity)
 
-    print("\nacc: {},\nprecision: {},\nsensitivity: {},\nFP_rate: {},\nPPV: {},\nNPV: {},\nF1_score: {}, "
-          "\ntotal_time: {},\n average_time: {}".format(acc, precision, sensitivity, FP_rate, PPV, NPV, F1_score,
+    print("\nacc: {},\nprecision: {},\nsensitivity: {},\nFP_rate: {},\nPPV: {},\nNPV: {},\nF1_score: {},\nF_beta_score: {},"
+          "\ntotal_time: {},\naverage_time: {}".format(acc, precision, sensitivity, FP_rate, PPV, NPV, F1_score, F_beta_score,
                                                         total_time, avg_time))
 
     f = open('./log/log_{}.txt'.format(t), 'a')
