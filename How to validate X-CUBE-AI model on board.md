@@ -2,17 +2,25 @@
 
 ## Generate C source code
 
-For details, please refer to `Getting Started with STM32CubeAI.md`
+For details, please refer to [Getting Started with STM32CubeAI.md](https://github.com/tinymlcontest/tinyml_contest2022_demo_example/blob/master/README-Cube.md)
 
 There is one difference from the above document：
 
-1. When enabling CubeAI package, you should choose `Application Temp`.
+1. When selecting X-Cube-AI package, you should choose `Application Temp`.
 
    <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220826184229102.png" alt="image-20220826184229102" style="zoom:50%;" />
 
    Under these mode, you don't need to specify the communication serial port, just select the model.
 
    <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220826184853048.png" alt="image-20220826184853048" style="zoom:50%;" />
+
+2. When generating code, make sure to select `Basic` option in `Application Structure`. 
+
+   <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220915101630837.png" alt="image-20220826184853048" style="zoom:50%;" />
+
+   In order to operate the header file later, don't forget to check option `Generate peripheral initialization as a pair of '.c/.h' files per peripheral` in the Code Generator when generating code.
+   
+   <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220915093242012.png" alt="image-20220915093242012" style="zoom:67%;" />
 
 
 
@@ -26,6 +34,10 @@ All modified files are provided. Four files should be modified in order to run t
 2. app_x-cube-ai.c
 3. app_x-cube-ai.h
 4. main.c
+
+When build the code, make sure that you check `Use MicroLIB` in Setting-Target-Code Generation. 
+
+   <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220916085712870.png" alt="image-20220915093242012" style="zoom:67%;" />
 
 Once connected the board with PC, you should check the port number through the device manager and change it in the `validation.py` file.
 
