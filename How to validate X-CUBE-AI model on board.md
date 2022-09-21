@@ -23,6 +23,10 @@ There are three additional steps compared the original code generation procedure
 
    <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220915101630837.png" alt="image-20220826184853048" style="zoom:50%;" />
 
+   `TIM` in LL library should be selected in `Project Manager-Advance Settings`.
+   
+   ![image-20220917145024951](https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220917145024951.png)
+
    In order to operate the header file later, don't forget to check option `Generate peripheral initialization as a pair of '.c/.h' files per peripheral` in the Code Generator when generating code.
    
    <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220915093242012.png" alt="image-20220915093242012" style="zoom:67%;" />
