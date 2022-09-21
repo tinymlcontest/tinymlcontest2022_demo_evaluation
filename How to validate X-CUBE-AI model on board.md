@@ -2,9 +2,7 @@
 
 ## Generate C source code
 
-For details, please refer to [Getting Started with STM32CubeAI.md](https://github.com/tinymlcontest/tinyml_contest2022_demo_example/blob/master/README-Cube.md)
-
-There is one difference from the above document：
+There are three additional steps compared the original code generation procedures [(Getting Started with STM32CubeAI.md)](https://github.com/tinymlcontest/tinyml_contest2022_demo_example/blob/master/README-Cube.md)：
 
 1. When selecting X-Cube-AI package, you should choose `Application Temp`.
 
@@ -14,7 +12,14 @@ There is one difference from the above document：
 
    <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220826184853048.png" alt="image-20220826184853048" style="zoom:50%;" />
 
-2. When generating code, make sure to select `Basic` option in `Application Structure`. 
+2. The `TIM` must be enabled to perform accurate inference latency measurement: 
+   ![image-20220917144705663](https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220917144705663.png)
+   
+   Make sure the Parameter Settings are modified as the figure shown below:
+
+   ![image-20220917144834834](https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220917144834834.png)
+
+3. When generating code, make sure to select `Basic` option in `Application Structure`. 
 
    <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220915101630837.png" alt="image-20220826184853048" style="zoom:50%;" />
 
@@ -26,20 +31,18 @@ There is one difference from the above document：
 
 ## Edit project files
 
-After generating project file, you should change certain files to enable validation. The modified code refers to the codes of CubeAI version 7.2.0.
+1. After generating C source code based project, you should replace certain files in order to enable evaluation. All four files that should be replaced are provided. You could directly copy and paste the files from the folder `framework_x-cube-ai` to the generated project in Keil:
 
-All modified files are provided. Four files should be modified in order to run the inference on board. You could directly copy and paste the files from the folder `framework_x-cube-ai` to the generated project in Keil:
+   1. **usart.c**
+   2. **app_x-cube-ai.c**
+   3. **app_x-cube-ai.h**
+   4. **main.c**
 
-1. usart.c
-2. app_x-cube-ai.c
-3. app_x-cube-ai.h
-4. main.c
-
-When build the code, make sure that you check `Use MicroLIB` in Setting-Target-Code Generation. 
+2. When build the project, make sure that you check `Use MicroLIB` in `Setting-Target-Code Generation`. 
 
    <img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220916085712870.png" alt="image-20220915093242012" style="zoom:67%;" />
 
-Once connected the board with PC, you should check the port number through the device manager and change it in the `validation.py` file.
+3. Once connected the board to PC, you should double-check the port number via the `Device Manager` and change it in the `validation.py` file.
 
 
 ## Validation

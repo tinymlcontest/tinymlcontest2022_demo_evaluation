@@ -1,14 +1,14 @@
 # How to validate the model with framework other than X-CUBE-AI on board
 
-In the folder `framework_your-own`, we provide a compressed evaluation project named `TEST_OwnModel.zip`. In the project, the file `main.c` contains two functions related to the evaluation on board.
+In the folder `framework_your-own`, we provide a compressed evaluation C code based project named `TEST_OwnModel.zip`. In the project, the file `main.c` contains two functions related to the evaluation on board. Those two functions should be modified by the team with their own implementations. 
 
-<img src="https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220830123056603.png" alt="image-20220830123056603" style="zoom: 33%;" />
+1. `Model_Init()` method is the function to load model weights, activation values, etc.
 
-1. `MX_X_CUBE_AI_Process()` method is related to model initialization, such as loading of model activation values, etc.
+2. `aiRun()` is the function to conduct inference on the input IEGM segment.
 
-2. `aiRun()` is the method of conducting inference on input IEGM segment.
+![iShot_2022-08-27_12.04.57](https://raw.githubusercontent.com/AugustZTR/picbed/master/img/image-20220921101009276.png)
 
-When validating your own model, you can write your own model initialization and inference methods, and replace both methods. The rest of the code, including data reception, data transmission and serial communication, **MUST** be retained as a template. When loading data, the input data is a three-dimensional array `input[1][1250][1]`.
+When validating your own model, you can write your own model weights loading and inference functions, and replace the aforementioned two functions with your own design. The rest of the code, including data reception, data transmission and serial communication, **MUST** be retained as a template. 
 
 ## Validation
 

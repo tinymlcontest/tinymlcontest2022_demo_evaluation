@@ -20,10 +20,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "crc.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 #include "app_x-cube-ai.h"
-#include <math.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -52,24 +52,22 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-double *softmax();
 /* USER CODE BEGIN PFP */
-double *softmax(float result[], double vector[])
-{
-  
-  double sum = 0;
 
-  for(int i = 0; i < 2; i++)
-  {
-    vector[i] = exp(result[i]);
-    sum += vector[i];
-  }
-  for (int i = 0; i < 2; i ++)
-  {
-    vector[i] = vector[i]/sum;
-  }
-  return vector;
+uint32_t getCurrentMicros(void)
+{
+	LL_SYSTICK_IsActiveCounterFlag();
+	uint32_t m = HAL_GetTick();
+	const uint32_t tms = SysTick->LOAD + 1;
+	__IO uint32_t u = tms - SysTick->VAL;
+	if (LL_SYSTICK_IsActiveCounterFlag())
+	{
+		m = HAL_GetTick();
+		u = tms - SysTick->VAL;
+	}
+	return (m*1000+(u*1000)/tms);
 }
+
 
 /* USER CODE END PFP */
 
@@ -89,7 +87,8 @@ int main(void)
   float input_tmp;
   int status=0;
   double vector[2] = {0};
-  double *softmax_result;
+	double start_time = 0;
+	double end_time = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -112,6 +111,7 @@ int main(void)
   MX_GPIO_Init();
   MX_CRC_Init();
   MX_USART2_UART_Init();
+  MX_TIM2_Init();
   MX_X_CUBE_AI_Init();
   /* USER CODE BEGIN 2 */
 
@@ -121,10 +121,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-
-  MX_X_CUBE_AI_Process();
-    /* USER CODE BEGIN 3 */
     // Send the code "begin" to tell the upper computer that it can start sending a set of test data.
     printf("begin");
     for(int16_t i=0;i<1;i++)
@@ -142,8 +138,9 @@ int main(void)
     }
     HAL_Delay(1);
     //Run the model and get results
+	start_time = getCurrentMicros();
     aiRun(input,result);
-    softmax_result = softmax(result, vector);
+	end_time = getCurrentMicros();
     // Send the code "ok" to tell the upper computer that inference is done and ready to send results.
     printf("ok");
     HAL_Delay(1);
@@ -152,14 +149,13 @@ int main(void)
     if(status==200)
     {
       // Sending results to the upper computer
-      if(softmax_result[0]>softmax_result[1])
-        printf("0");
+      if(result[0]>result[1])
+        printf("0,%.6f", (double)(end_time-start_time)/(double)1000000);
       else
-        printf("1");
-      HAL_Delay(1);
-      
+        printf("1,%.6f", (double)(end_time-start_time)/(double)1000000);
+      HAL_Delay(30);
     }
-    
+
   }
   /* USER CODE END 3 */
 }
@@ -205,8 +201,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_USART2;
-  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART2;
   PeriphClkInit.Usart2ClockSelection = RCC_USART2CLKSOURCE_PCLK1;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
