@@ -33,3 +33,6 @@ The metric Flash Usage **F** is based on `Code + RO Data + RW Data` reported by 
 
 ## How do I obtain the final scoring?
 After obtaining three metrics, you can evaluate the scores of your models using the scoring function specified in [TinyML Contest 2022 evaluation](https://tinymlcontest.github.io/TinyML-Design-Contest/Problems.html). 
+
+## How do I submit the design?
+You can refer to [TinyML Contest 2022 Submission](https://tinymlcontest.github.io/TinyML-Design-Contest/Submission.html) for submission instructions. 
