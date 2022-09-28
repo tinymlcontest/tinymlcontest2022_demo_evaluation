@@ -31,7 +31,7 @@ def main():
     port = args.com  # set port number
     ser = serial.Serial(port=port, baudrate=args.baudrate)  # open the serial
     print(ser)
-    f = open('./test_indice1.txt', 'r')
+    f = open('./test_indice.txt', 'r')
     for line in f:
         List.append(line)
     ofp = open(file='log/res_{}.txt'.format(t), mode='w')  # make a new log file
